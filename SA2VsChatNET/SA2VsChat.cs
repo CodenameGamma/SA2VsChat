@@ -35,6 +35,7 @@ namespace SA2VsChatNET
 
 	public static class SA2VsChat
 	{
+		public static bool IsCrowdControlGame = true; //Used To Toggle and make easy builds
 		private abstract class Command
 		{
 			public abstract string Name { get; }
@@ -1101,24 +1102,31 @@ namespace SA2VsChatNET
 			LoadINIFile();
 			//TwitchIRCThread Tirc = new Thread(PulseTwitchIRC);
 			//Tirc.Start();
-			
-			if(EnableTwitchSupport)
+			if (IsCrowdControlGame)
 			{
-				Console.Write("------------------------------------------ \n");
-				Console.Write("Starting Twitch IRC Client. \n");
-				new Thread(() => ProcessTwitchClient()).Start();
-				Console.Write("------------------------------------------ \n");
+				new Thread(() => CrowdControl.SimpleTCPClient.StartThreadingCC()).Start();
+		
 			}
-			if(EnableDiscordSupport)
-			{
-				Console.Write("------------------------------------------ \n");
-				ProcessDiscord();
-				Console.Write("Starting Discord Client \n");
-				Console.Write("------------------------------------------ \n");
-			}
-			if (EnableYoutubeSupport)
-			{
-				new Thread(() => Youtube.ProcessYoutubeThread()).Start();
+            else
+            {
+				if (EnableTwitchSupport)
+				{
+					Console.Write("------------------------------------------ \n");
+					Console.Write("Starting Twitch IRC Client. \n");
+					new Thread(() => ProcessTwitchClient()).Start();
+					Console.Write("------------------------------------------ \n");
+				}
+				if (EnableDiscordSupport)
+				{
+					Console.Write("------------------------------------------ \n");
+					ProcessDiscord();
+					Console.Write("Starting Discord Client \n");
+					Console.Write("------------------------------------------ \n");
+				}
+				if (EnableYoutubeSupport)
+				{
+					new Thread(() => Youtube.ProcessYoutubeThread()).Start();
+				}
 			}
 			SetResetVotesPtr(Marshal.GetFunctionPointerForDelegate(ResetVotesDI));
 		}
@@ -1185,51 +1193,71 @@ namespace SA2VsChatNET
 		
 		
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void GiveItem(int item);
+		public static extern bool GiveItem(int item);
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void SpawnOmochao();
+		public static extern bool SpawnOmochao();
+		[return: MarshalAs(UnmanagedType.I1)]
+		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+		public static extern bool IsInGame();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void PlayVoice(int id);
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void Stop();
+		public static extern bool Stop();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void GottaGoFast();
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void TsafOgAttog();
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void SuperJump();
+		public static extern bool SuperJump();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void PmujRepus();
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void TimeStop();
+		public static extern bool TimeStop();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern bool Die([MarshalAs(UnmanagedType.LPStr)] string user);
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern bool Win([MarshalAs(UnmanagedType.LPStr)] string user);
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void Grow();
+		public static extern bool Grow();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void Shrink();
+		public static extern bool Shrink();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void Bonus(int scr);
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void PlayMusic(int id);
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void HighGravity();
+		public static extern bool HighGravity();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void LowGravity();
+		public static extern bool LowGravity();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void SpeedUp();
+		public static extern bool SpeedUp();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void SlowDown();
+		public static extern bool SlowDown();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void HealBoss();
+		public static extern bool HealBoss();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void Confuse();
+		public static extern bool Confuse();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void Earthquake();
+		public static extern bool Earthquake();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void ToggleChaoKey();
+		public static extern bool ToggleChaoKey();
+		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void ToggleWater();
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]

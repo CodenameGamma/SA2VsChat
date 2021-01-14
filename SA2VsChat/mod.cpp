@@ -256,34 +256,49 @@ int fasttimer = 0;
 int speedlevel = 0;
 extern "C"
 {
-	__declspec(dllexport) void GiveItem(int item)
+	__declspec(dllexport) bool GiveItem(int item)
 	{
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead) && CurrentLevel < LevelIDs_Route101280 && CurrentLevel != LevelIDs_FinalHazard)
 		{
 			DisplayItemBoxItem(0, ItemBox_Items[item].Texture);
 			ItemBox_Items[item].Code(MainCharacter[0], 0);
+			return true;
 		}
+		return false;
 	}
 
-	__declspec(dllexport) void SpawnOmochao()
+	__declspec(dllexport) bool SpawnOmochao()
 	{
 		if (GameState == GameStates_Ingame && CurrentLevel < LevelIDs_Route101280 && CurrentLevel != LevelIDs_FinalHazard)
+		{
 			AllocateObjectMaster(CheckLoadOmochao, 2, "CheckLoadOmochao");
+			return true;
+		}
+		return false;
 	}
-
+	__declspec(dllexport) bool IsInGame()
+	{
+		if (GameState == GameStates_Ingame && PlayerPaused == 0)
+		{
+			return true;
+		}
+		return false;
+	}
 	__declspec(dllexport) void PlayVoice(int id)
 	{
 		PlayVoice(0, id);
 	}
 
-	__declspec(dllexport) void Stop()
+	__declspec(dllexport) bool Stop()
 	{
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			MainCharObj2[0]->Speed.x = 0;
 			MainCharObj2[0]->Speed.y = 0;
 			MainCharObj2[0]->Speed.z = 0;
+			return true;
 		}
+		return false;
 	}
 
 	__declspec(dllexport) void GottaGoFast()
@@ -296,21 +311,40 @@ extern "C"
 		fasttimer = -60;
 	}
 
-	__declspec(dllexport) void SuperJump()
+	__declspec(dllexport) bool SuperJump()
 	{
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		{
 			MainCharObj2[0]->Speed.y = MainCharObj2[0]->PhysData.VSpeedCap;
+			return true;
+		}
+		return false;
 	}
 
-	__declspec(dllexport) void PmujRepus()
+	__declspec(dllexport) bool PmujRepus()
 	{
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		{
 			MainCharObj2[0]->Speed.y = -MainCharObj2[0]->PhysData.VSpeedCap;
+			return true;
+		}
+		return false;
 	}
-
-	__declspec(dllexport) void TimeStop()
+	
+	int DoingTimeStopCounter = 0;
+	__declspec(dllexport) bool TimeStop()
 	{
-		TimeStopped ^= 2;
+		
+		if (DoingTimeStopCounter == 0 && GameState == GameStates_Ingame && CurrentLevel < LevelIDs_Route101280
+			&& CurrentLevel != LevelIDs_FinalHazard)
+		{
+		
+			DoingTimeStopCounter = 900;
+			TimeStopped |= 2;
+			return true;
+		}
+		return false;
+		
 	}
 
 	__declspec(dllexport) bool Die(const char* user)
@@ -335,16 +369,30 @@ extern "C"
 		return false;
 	}
 
-	__declspec(dllexport) void Grow()
+	int Sizetimer = 0;
+	__declspec(dllexport) bool Grow()
 	{
-		if (targetSize < 8)
-			SetTargetSize(targetSize * 2);
+		
+		if (Sizetimer == 0)
+		{
+			SetTargetSize(targetSize * 4);
+			Sizetimer = 900; // 30 seconds
+			return true;
+		}
+		
+		return false;
 	}
+			
 
-	__declspec(dllexport) void Shrink()
+	__declspec(dllexport) bool Shrink()
 	{
-		if (targetSize > 0.125)
-			SetTargetSize(targetSize / 2);
+		if (Sizetimer == 0)
+		{
+			SetTargetSize(targetSize / 4);
+			Sizetimer = 900; // 30 seconds
+			return true;
+		}
+		return false;
 	}
 
 	__declspec(dllexport) void Bonus(int scr)
@@ -358,45 +406,65 @@ extern "C"
 		PlayMusic(MusicList2[id]);
 		ResetMusic();
 	}
-
-	__declspec(dllexport) void HighGravity()
+	int GravityTimer = 0;
+	__declspec(dllexport) bool HighGravity()
 	{
-		if (MainCharObj1[0] && gravmult < 8)
+		if (MainCharObj1[0] && GravityTimer == 0)
+		{
+			GravityTimer = 900;
 			gravmult *= 2;
+			return true;
+		}
+		return false;
 	}
 
-	__declspec(dllexport) void LowGravity()
+	__declspec(dllexport) bool LowGravity()
 	{
-		if (MainCharObj1[0] && gravmult > 0.125)
+		if (MainCharObj1[0] && GravityTimer == 0)
+		{
+			GravityTimer = 900;
 			gravmult /= 2;
-	}
-
-	__declspec(dllexport) void SpeedUp()
-	{
-		if (MainCharObj2[0] && speedlevel < 3)
-		{
-			++speedlevel;
-			MainCharObj2[0]->PhysData.GroundAccel *= 2;
-			MainCharObj2[0]->PhysData.MaxAccel *= 2;
-			MainCharObj2[0]->PhysData.field_68 *= 2;
+			return true;
 		}
+		return false;
 	}
-
-	__declspec(dllexport) void SlowDown()
+	int SpeedTimer = 0;
+	__declspec(dllexport) bool SpeedUp()
 	{
-		if (MainCharObj2[0] && speedlevel > -3)
+		if (SpeedTimer == 0 && MainCharObj2[0] && speedlevel == 0)
 		{
-			--speedlevel;
-			MainCharObj2[0]->PhysData.GroundAccel /= 2;
-			MainCharObj2[0]->PhysData.MaxAccel /= 2;
-			MainCharObj2[0]->PhysData.field_68 /= 2;
+			speedlevel = 1;
+			MainCharObj2[0]->PhysData.GroundAccel *= 3;
+			MainCharObj2[0]->PhysData.MaxAccel *= 3;
+			MainCharObj2[0]->PhysData.field_68 *= 3;
+			SpeedTimer = 1800; //30sec
+			return true;
 		}
+		return false;
 	}
 
-	__declspec(dllexport) void HealBoss()
+	__declspec(dllexport) bool SlowDown()
+	{
+		if (SpeedTimer == 0 && MainCharObj2[0] && speedlevel == 0)
+		{
+			speedlevel = 1;
+			MainCharObj2[0]->PhysData.GroundAccel /= 3;
+			MainCharObj2[0]->PhysData.MaxAccel /= 3;
+			MainCharObj2[0]->PhysData.field_68 /= 3;
+			SpeedTimer = 1800; //30sec
+			return true;
+		}
+		return false;
+	}
+
+	__declspec(dllexport) bool HealBoss()
 	{
 		if (MainCharObj2[1] && MainCharObj2[1]->MechHP < 5)
+		{
 			++MainCharObj2[1]->MechHP;
+			return true;
+		}
+		return false;
 	}
 
 	__declspec(dllexport) void SetNextStoryEvent(char type, short id, bool dark)
@@ -491,16 +559,18 @@ extern "C"
 		}
 	}
 
-	__declspec(dllexport) void Confuse()
+	__declspec(dllexport) bool Confuse()
 	{
 		if (MainCharObj2[0] && !MainCharObj2[0]->ConfuseTime)
 		{
 			MainCharObj2[0]->ConfuseTime = 300;
 			ConfuStar_Load(0);
+			return true;
 		}
+		return false;
 	}
 
-	__declspec(dllexport) void Earthquake()
+	__declspec(dllexport) bool Earthquake()
 	{
 		if (MainCharacter[0])
 		{
@@ -508,13 +578,19 @@ extern "C"
 			ObjectMaster om{};
 			om.Data2.Undefined = d2;
 			Knuckles2PEarthquakeMan_Delete(&om);
+			return true;
 		}
+		return false;
 	}
 
-	__declspec(dllexport) void ToggleChaoKey()
+	__declspec(dllexport) bool ToggleChaoKey()
 	{
 		if (MainCharacter[0])
+		{
 			HaveChaoKey ^= 1;
+			return true;
+		}
+		return false;
 	}
 
 	__declspec(dllexport) void ToggleWater()
@@ -571,8 +647,56 @@ extern "C"
 
 	__declspec(dllexport) void OnFrame()
 	{
+		//TimeStop Return Timer
+		if (DoingTimeStopCounter > 0 && GameState == GameStates_Ingame)
+		{
+			if (--DoingTimeStopCounter == 0)
+			{
+				TimeStopped &= ~2;
+			}
+		}
+		//Speed Timer
+		if (SpeedTimer > 0)
+		{
+			if (--SpeedTimer == 0)
+			{
+				printf("Returned Phys To Normal!!!! \n");
+				MainCharObj2[0]->PhysData.GroundAccel = PhysicsArray[MainCharObj2[0]->CharID2].GroundAccel;
+				MainCharObj2[0]->PhysData.MaxAccel = PhysicsArray[MainCharObj2[0]->CharID2].MaxAccel;
+				MainCharObj2[0]->PhysData.field_68 = PhysicsArray[MainCharObj2[0]->CharID2].field_68;
+				//Speed level should be back to normal.
+				//Speed Timer Done and reset.
+				speedlevel = 0;
+			}
+		}
+		//Gravity Return Timer
+		if (GravityTimer > 0 && MainCharObj2[0])
+		{
+			if (--GravityTimer == 0)
+			{
+				printf("Returned Gravity To Normal!!!! \n");
+				//Return Gravity to nomral
+				MainCharObj2[0]->PhysData.Gravity = PhysicsArray[MainCharObj2[0]->CharID2].Gravity;
+				gravmult = 1;
+			}
+		}
+		//Size Return Timer
+		if (Sizetimer > 0 && MainCharObj2[0])
+		{
+			if (--Sizetimer == 0)
+			{
+				SetTargetSize(1);
+			}
+			
+		}
+		//Prevent a gameover.
+		if (MainCharObj2[0] && Life_Count[0] < 99)
+		{
+			Life_Count[0] = 99;
+		}
 		if (MainCharObj1[0])
 		{
+
 			if (currentSize < targetSize)
 			{
 				currentSize += growthAmount;
@@ -581,6 +705,7 @@ extern "C"
 				MainCharObj1[0]->Scale.x = (float)currentSize;
 				MainCharObj1[0]->Scale.y = (float)currentSize;
 				MainCharObj1[0]->Scale.z = (float)currentSize;
+				
 			}
 			else if (currentSize > targetSize)
 			{
