@@ -278,7 +278,7 @@ extern "C"
 	}
 	__declspec(dllexport) bool IsInGame()
 	{
-		if (GameState == GameStates_Ingame && PlayerPaused == 0)
+		if (GameState == GameStates_Ingame && PlayerPaused == 0 && ControllerEnabled && TimerFrames >= 2)
 		{
 			return true;
 		}
@@ -346,10 +346,62 @@ extern "C"
 		return false;
 		
 	}
+	bool IsMechLevel()
+	{
 
+		if (CurrentLevel == LevelIDs_IronGate)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_SandOcean)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_WeaponsBed)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_LostColony)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_CannonsCoreE)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_CannonsCoreT)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_EggGolemE)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_TailsVsEggman2)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_PrisonLane)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_EternalEngine)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_TailsVsEggman1)
+		{
+			return true;
+		}
+		if (CurrentLevel == LevelIDs_MissionStreet)
+		{
+			return true;
+		}
+		return false; 
+	}
 	__declspec(dllexport) bool Die(const char* user)
 	{
-		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		if (IsInGame() && IsMechLevel() == false && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			PrintDebug("Killed by %s!", user);
 			KillPlayer(0);
