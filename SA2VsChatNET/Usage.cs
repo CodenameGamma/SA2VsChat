@@ -105,17 +105,18 @@ namespace CrowdControl
                     }
                 case "1up":
                     {
-                        if (SA2VsChatNET.SA2VsChat.GiveItem(2))
-                        {
+                        Respond(request, SimpleTCPClient.EffectResult.Unavailable).Forget();
+                        /* if (SA2VsChatNET.SA2VsChat.GiveItem(2))
+                         {
 
-                            //try to do the thing
-                            Respond(request, SimpleTCPClient.EffectResult.Success).Forget(); //or failtemporary
-                        }
-                        else
-                        {
+                             //try to do the thing
+                             Respond(request, SimpleTCPClient.EffectResult.Success).Forget(); //or failtemporary
+                         }
+                         else
+                         {
 
-                            Respond(request, SimpleTCPClient.EffectResult.Retry).Forget();
-                        }
+                             Respond(request, SimpleTCPClient.EffectResult.Retry).Forget();
+                         }*/
                         break;
                     }
                 case "bomb":
@@ -407,6 +408,8 @@ namespace CrowdControl
                     }
                 case "HealBoss":
                     {
+                        Respond(request, SimpleTCPClient.EffectResult.Unavailable).Forget();
+                        /*
                         if (SA2VsChatNET.SA2VsChat.HealBoss())
                         {
                             Console.WriteLine("Effect Done! - HealBoss");
@@ -417,7 +420,7 @@ namespace CrowdControl
                         {
                             Console.WriteLine("Effect retried! - HealBoss");
                             Respond(request, SimpleTCPClient.EffectResult.Retry).Forget();
-                        }
+                        }*/
                         break;
                     }
                 case "Confuse":
@@ -467,18 +470,18 @@ namespace CrowdControl
                     }
                 case "ChangeCharacterSonic":
                     {
-                        SA2VsChatNET.SA2VsChat.ChangeCharacter(0);
+                        //SA2VsChatNET.SA2VsChat.ChangeCharacter(0);
 
                         //try to do the thing
-                        Respond(request, SimpleTCPClient.EffectResult.Success).Forget(); //or failtemporary
+                        Respond(request, SimpleTCPClient.EffectResult.Unavailable).Forget(); //or failtemporary
                         break;
                     }
                 case "ChangeCharacterShadow":
                     {
-                        SA2VsChatNET.SA2VsChat.ChangeCharacter(1);
+                        //SA2VsChatNET.SA2VsChat.ChangeCharacter(1);
 
                         //try to do the thing
-                        Respond(request, SimpleTCPClient.EffectResult.Success).Forget(); //or failtemporary
+                        Respond(request, SimpleTCPClient.EffectResult.Unavailable).Forget(); //or failtemporary
                         break;
                     }
                 default:

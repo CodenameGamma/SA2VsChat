@@ -8,6 +8,107 @@
 std::random_device rd;
 std::default_random_engine gen(rd());
 
+
+StoryEntry HeroStorySequence[] = {
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 0, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_CityEscape, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_BigFoot, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 2, 3, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_WildCanyon, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 4, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_TailsVsEggman1, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 5, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_PrisonLane, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 6, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_MetalHarbor, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_SonicVsShadow1, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_GreenForest, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 409, 50, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_PumpkinHill, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 51, 411, 11, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_MissionStreet, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 52, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_AquaticMine, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 14, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 15, 16, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_HiddenBase, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_PyramidCave, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 17, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_DeathChamber, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_KingBoomBoo, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 19, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_EggGolemS, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 420, 21, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_EternalEngine, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 22, 53, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_MeteorHerd, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Knuckles, LevelIDs_KnucklesVsRouge, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 24, 54, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_CrazyGadget, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 25, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechTails, LevelIDs_TailsVsEggman2, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 26, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_FinalRush, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 27, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Sonic, LevelIDs_SonicVsShadow2, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 28, -1, -1, -1 },
+	{ StoryEntryType_Credits, Characters_Sonic, LevelIDs_BasicTest, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 429, -1, -1, -1 },
+	{ StoryEntryType_End }
+};
+
+StoryEntry DarkStorySequence[] = {
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 100, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_IronGate, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 101, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_HotShot, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 102, 103, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_DryLagoon, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 150, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_SandOcean, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 105, 106, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_RadicalHighway, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 107, 151, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_EggQuarters, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 109, 152, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_LostColony, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 111, 112, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_WeaponsBed, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 113, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_TailsVsEggman1, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_SecurityHall, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_FlyingDog, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 116, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_WhiteJungle, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_SonicVsShadow1, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 118, 409, 119, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 153, 411, 120, 154 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_SkyRail, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 122, 123, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_EggGolemE, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 524, 124, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_MadSpace, -1, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Rouge, LevelIDs_KnucklesVsRouge, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 126, 127, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_CosmicWall, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 128, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_MechEggman, LevelIDs_TailsVsEggman2, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 129, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_FinalChase, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 130, -1, -1, -1 },
+	{ StoryEntryType_Level, Characters_Shadow, LevelIDs_SonicVsShadow2, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 131, -1, -1, -1 },
+	{ StoryEntryType_Credits, Characters_Sonic, LevelIDs_BasicTest, -1, -1, -1, -1 },
+	{ StoryEntryType_Event, Characters_Sonic, LevelIDs_BasicTest, 532, -1, -1, -1 },
+	{ StoryEntryType_End }
+};
+
+PointerInfo pointers[] = {
+	ptrdecl(0x4586C5, &HeroStorySequence),
+	ptrdecl(0x4586E6, &DarkStorySequence)
+};
+
+
 DataPointer(int, StageMessageCount, 0xB5D200);
 ObjectMaster* LoadOmochao(NJS_VECTOR* position)
 {
@@ -60,127 +161,10 @@ void SetTargetSize(double trgt)
 const char* MusicList2[157];
 
 // void __usercall(StoryEntry *a1@<edx>)
-static const void* const LoadStoryEventPtr = (void*)0x4589D0;
-static inline void LoadStoryEvent(StoryEntry* a1)
-{
-	__asm
-	{
-		mov edx, [a1]
-		call LoadStoryEventPtr
-	}
-}
+
 
 void (__stdcall* ResetVotes)(int eventno);
-StoryEntry NextStoryEntry;
-DataArray(StoryEntry, HeroStorySequence, 0x173A148, 46);
-DataArray(StoryEntry, DarkStorySequence, 0x173A370, 44);
-DataArray(StoryEntry, LastStorySequence, 0x173A580, 8);
-DataArray(StoryEntry, IntroStorySequence, 0x173A5E0, 2);
-DataArray(StoryEntry, HeroBossRushSequence, 0x173A628, 9);
-DataArray(StoryEntry, DarkBossRushSequence, 0x173A698, 9);
-DataArray(StoryEntry, AllBossRushSequence, 0x173A708, 19);
-DataPointer(char, NextStoryEvent, 0x1DEB31E);
-DataPointer(char, CurrentStoryEvent, 0x1DEB31F);
-DataPointer(char, CurrentStorySequence, 0x1DEB320);
-void __cdecl GetNextStoryEvent_r()
-{
-	switch (CurrentStorySequence)
-	{
-	case 1:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&HeroStorySequence[(unsigned __int8)min(NextStoryEvent, HeroStorySequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 2:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&DarkStorySequence[(unsigned __int8)min(NextStoryEvent, DarkStorySequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 3:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&LastStorySequence[(unsigned __int8)min(NextStoryEvent, LastStorySequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 4:
-		LoadStoryEvent(&IntroStorySequence[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 5:
-		LoadStoryEvent(&((StoryEntry*)0x1730074)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 6:
-		LoadStoryEvent(&((StoryEntry*)0x173089C)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 7:
-		LoadStoryEvent(&((StoryEntry*)0x173A5F8)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 8:
-		LoadStoryEvent(&((StoryEntry*)0x1730AC4)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 9:
-		LoadStoryEvent(&((StoryEntry*)0x17312EC)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 0xA:
-		LoadStoryEvent(&((StoryEntry*)0x173A610)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 0xB:
-		LoadStoryEvent(&((StoryEntry*)0x17318CC)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	case 0xC:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&HeroBossRushSequence[(unsigned __int8)min(NextStoryEvent, HeroBossRushSequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 0xD:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&DarkBossRushSequence[(unsigned __int8)min(NextStoryEvent, DarkBossRushSequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 0xE:
-		if (NextStoryEntry.Type == -1)
-			LoadStoryEvent(&AllBossRushSequence[(unsigned __int8)min(NextStoryEvent, AllBossRushSequence_Length - 1)]);
-		else
-			LoadStoryEvent(&NextStoryEntry);
-		CurrentStoryEvent = NextStoryEvent;
-		ResetVotes(CurrentStoryEvent);
-		NextStoryEntry.Type = -1;
-		break;
-	case 0xF:
-		LoadStoryEvent(&((StoryEntry*)0x173A7EC)[(unsigned __int8)NextStoryEvent]);
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	default:
-		CurrentStoryEvent = NextStoryEvent;
-		break;
-	}
-}
+
 
 double gravmult = 1;
 void __fastcall sub_459910_i(CharObj2Base* co2)
@@ -256,12 +240,60 @@ int fasttimer = 0;
 int speedlevel = 0;
 extern "C"
 {
+	bool IsFinalLevel()
+	{
+		if (CurrentLevel == LevelIDs_FinalHazard)
+		{
+			return true;
+		}
+		return false;
+	}
 	__declspec(dllexport) bool GiveItem(int item)
 	{
-		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead) && CurrentLevel < LevelIDs_Route101280 && CurrentLevel != LevelIDs_FinalHazard)
+
+		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead) && CurrentLevel < LevelIDs_Route101280 )
 		{
-			DisplayItemBoxItem(0, ItemBox_Items[item].Texture);
-			ItemBox_Items[item].Code(MainCharacter[0], 0);
+			
+			
+			if (IsFinalLevel())
+			{
+				//Invincibility... Crashes here for some reason so just refuse it.
+				if (item == 10)
+				{
+					return false;
+				}
+				//Ring 1
+				if (item == 1) 
+				{
+					RingCount[0] = RingCount[0] + 1;
+					RingCount[1] = RingCount[1] + 1;
+					return true;
+				}
+				//Ring 10
+				if (item == 3)
+				{
+					RingCount[0] = RingCount[0] + 10;
+					RingCount[1] = RingCount[1] + 10;
+					return true;
+				}
+				//Ring 20
+				if (item == 4)
+				{
+					RingCount[0] = RingCount[0] + 20;
+					RingCount[1] = RingCount[1] + 20;
+					return true;
+				}
+				DisplayItemBoxItem(0, ItemBox_Items[item].Texture);
+				ItemBox_Items[item].Code(MainCharacter[0], 0);
+				DisplayItemBoxItem(1, ItemBox_Items[item].Texture);
+				ItemBox_Items[item].Code(MainCharacter[1], 1);
+				return true;
+			}
+			else
+			{
+				DisplayItemBoxItem(0, ItemBox_Items[item].Texture);
+				ItemBox_Items[item].Code(MainCharacter[0], 0);
+			}
 			return true;
 		}
 		return false;
@@ -296,6 +328,12 @@ extern "C"
 			MainCharObj2[0]->Speed.x = 0;
 			MainCharObj2[0]->Speed.y = 0;
 			MainCharObj2[0]->Speed.z = 0;
+			if (IsFinalLevel())
+			{
+				MainCharObj2[1]->Speed.x = 0;
+				MainCharObj2[1]->Speed.y = 0;
+				MainCharObj2[1]->Speed.z = 0;
+			}
 			return true;
 		}
 		return false;
@@ -316,6 +354,10 @@ extern "C"
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			MainCharObj2[0]->Speed.y = MainCharObj2[0]->PhysData.VSpeedCap;
+			if (IsFinalLevel())
+			{
+				MainCharObj2[1]->Speed.y = MainCharObj2[1]->PhysData.VSpeedCap;
+			}
 			return true;
 		}
 		return false;
@@ -326,6 +368,10 @@ extern "C"
 		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			MainCharObj2[0]->Speed.y = -MainCharObj2[0]->PhysData.VSpeedCap;
+			if (IsFinalLevel())
+			{
+				MainCharObj2[1]->Speed.y = -MainCharObj2[1]->PhysData.VSpeedCap;
+			}
 			return true;
 		}
 		return false;
@@ -346,6 +392,7 @@ extern "C"
 		return false;
 		
 	}
+
 	bool IsMechLevel()
 	{
 
@@ -412,7 +459,7 @@ extern "C"
 
 	__declspec(dllexport) bool Win(const char* user)
 	{
-		if (MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		if (IsInGame() && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			PrintDebug("Level ended by %s!", user);
 			AwardWin(0);
@@ -489,6 +536,12 @@ extern "C"
 			MainCharObj2[0]->PhysData.GroundAccel *= 3;
 			MainCharObj2[0]->PhysData.MaxAccel *= 3;
 			MainCharObj2[0]->PhysData.field_68 *= 3;
+			if (IsFinalLevel())
+			{
+				MainCharObj2[1]->PhysData.GroundAccel *= 3;
+				MainCharObj2[1]->PhysData.MaxAccel *= 3;
+				MainCharObj2[1]->PhysData.field_68 *= 3;
+			}
 			SpeedTimer = 1800; //30sec
 			return true;
 		}
@@ -503,113 +556,38 @@ extern "C"
 			MainCharObj2[0]->PhysData.GroundAccel /= 3;
 			MainCharObj2[0]->PhysData.MaxAccel /= 3;
 			MainCharObj2[0]->PhysData.field_68 /= 3;
+			if (IsFinalLevel())
+			{
+				MainCharObj2[1]->PhysData.GroundAccel /= 3;
+				MainCharObj2[1]->PhysData.MaxAccel /= 3;
+				MainCharObj2[1]->PhysData.field_68 /= 3;
+			}
 			SpeedTimer = 1800; //30sec
 			return true;
 		}
 		return false;
 	}
 
+
+	/// <summary>
+	/// This doesn't work. 
+	/// 
+	/// WHY DOESN'T IT WORK!? 
+	/// </summary>
+	/// <returns></returns>
 	__declspec(dllexport) bool HealBoss()
 	{
-		if (MainCharObj2[1] && MainCharObj2[1]->MechHP < 5)
+		return false;
+		/*if (MainCharObj2[1] && MainCharObj2[1]->MechHP < 5)
 		{
 			++MainCharObj2[1]->MechHP;
 			return true;
 		}
-		return false;
+		return false;*/
+
 	}
 
-	__declspec(dllexport) void SetNextStoryEvent(char type, short id, bool dark)
-	{
-		NextStoryEntry.Type = type;
-		switch (type)
-		{
-		case StoryEntryType_Level:
-			NextStoryEntry.Level = id;
-			switch (id)
-			{
-			case LevelIDs_CityEscape:
-			case LevelIDs_BigFoot:
-			case LevelIDs_MetalHarbor:
-			case LevelIDs_GreenForest:
-			case LevelIDs_PyramidCave:
-			case LevelIDs_EggGolemS:
-			case LevelIDs_CrazyGadget:
-			case LevelIDs_FinalRush:
-			case LevelIDs_GreenHill:
-				NextStoryEntry.Character = Characters_Sonic;
-				break;
-			case LevelIDs_HotShot:
-			case LevelIDs_RadicalHighway:
-			case LevelIDs_WhiteJungle:
-			case LevelIDs_SkyRail:
-			case LevelIDs_FinalChase:
-			case LevelIDs_Biolizard:
-				NextStoryEntry.Character = Characters_Shadow;
-				break;
-			case LevelIDs_WildCanyon:
-			case LevelIDs_PumpkinHill:
-			case LevelIDs_AquaticMine:
-			case LevelIDs_DeathChamber:
-			case LevelIDs_KingBoomBoo:
-			case LevelIDs_MeteorHerd:
-				NextStoryEntry.Character = Characters_Knuckles;
-				break;
-			case LevelIDs_DryLagoon:
-			case LevelIDs_EggQuarters:
-			case LevelIDs_SecurityHall:
-			case LevelIDs_FlyingDog:
-			case LevelIDs_MadSpace:
-				NextStoryEntry.Character = Characters_Rouge;
-				break;
-			case LevelIDs_PrisonLane:
-			case LevelIDs_MissionStreet:
-			case LevelIDs_HiddenBase:
-			case LevelIDs_EternalEngine:
-			case LevelIDs_CannonsCoreT:
-				NextStoryEntry.Character = Characters_MechTails;
-				break;
-			case LevelIDs_IronGate:
-			case LevelIDs_SandOcean:
-			case LevelIDs_LostColony:
-			case LevelIDs_WeaponsBed:
-			case LevelIDs_EggGolemE:
-			case LevelIDs_CosmicWall:
-				NextStoryEntry.Character = Characters_MechEggman;
-				break;
-			case LevelIDs_SonicVsShadow1:
-			case LevelIDs_SonicVsShadow2:
-				if (dark)
-					NextStoryEntry.Character = Characters_Shadow;
-				else
-					NextStoryEntry.Character = Characters_Sonic;
-				break;
-			case LevelIDs_KnucklesVsRouge:
-				if (dark)
-					NextStoryEntry.Character = Characters_Rouge;
-				else
-					NextStoryEntry.Character = Characters_Knuckles;
-				break;
-			case LevelIDs_TailsVsEggman1:
-			case LevelIDs_TailsVsEggman2:
-				if (dark)
-					NextStoryEntry.Character = Characters_MechEggman;
-				else
-					NextStoryEntry.Character = Characters_MechTails;
-				break;
-			case LevelIDs_Route101280:
-				if (dark)
-					NextStoryEntry.Character = Characters_Rouge;
-				else
-					NextStoryEntry.Character = Characters_MechTails;
-				break;
-			}
-			break;
-		case StoryEntryType_Event:
-			NextStoryEntry.Events[0] = id;
-			break;
-		}
-	}
+	
 
 	__declspec(dllexport) bool Confuse()
 	{
@@ -618,6 +596,7 @@ extern "C"
 			MainCharObj2[0]->ConfuseTime = 300;
 			ConfuStar_Load(0);
 			return true;
+			
 		}
 		return false;
 	}
@@ -699,6 +678,11 @@ extern "C"
 
 	__declspec(dllexport) void OnFrame()
 	{
+		if (MainCharObj2[0])
+		{
+			MainCharObj2[0]->Upgrades |= ~Upgrades_SuperSonic;
+		}
+			
 		//TimeStop Return Timer
 		if (DoingTimeStopCounter > 0 && GameState == GameStates_Ingame)
 		{
@@ -716,6 +700,12 @@ extern "C"
 				MainCharObj2[0]->PhysData.GroundAccel = PhysicsArray[MainCharObj2[0]->CharID2].GroundAccel;
 				MainCharObj2[0]->PhysData.MaxAccel = PhysicsArray[MainCharObj2[0]->CharID2].MaxAccel;
 				MainCharObj2[0]->PhysData.field_68 = PhysicsArray[MainCharObj2[0]->CharID2].field_68;
+				if (IsFinalLevel())
+				{
+					MainCharObj2[1]->PhysData.GroundAccel = PhysicsArray[MainCharObj2[0]->CharID2].GroundAccel;
+					MainCharObj2[1]->PhysData.MaxAccel = PhysicsArray[MainCharObj2[0]->CharID2].MaxAccel;
+					MainCharObj2[1]->PhysData.field_68 = PhysicsArray[MainCharObj2[0]->CharID2].field_68;
+				}
 				//Speed level should be back to normal.
 				//Speed Timer Done and reset.
 				speedlevel = 0;
@@ -729,6 +719,10 @@ extern "C"
 				printf("Returned Gravity To Normal!!!! \n");
 				//Return Gravity to nomral
 				MainCharObj2[0]->PhysData.Gravity = PhysicsArray[MainCharObj2[0]->CharID2].Gravity;
+				if (IsFinalLevel())
+				{
+					MainCharObj2[1]->PhysData.Gravity = PhysicsArray[MainCharObj2[0]->CharID2].Gravity;
+				}
 				gravmult = 1;
 			}
 		}
@@ -757,6 +751,12 @@ extern "C"
 				MainCharObj1[0]->Scale.x = (float)currentSize;
 				MainCharObj1[0]->Scale.y = (float)currentSize;
 				MainCharObj1[0]->Scale.z = (float)currentSize;
+				if (IsFinalLevel())
+				{
+					MainCharObj1[1]->Scale.x = (float)currentSize;
+					MainCharObj1[1]->Scale.y = (float)currentSize;
+					MainCharObj1[1]->Scale.z = (float)currentSize;
+				}
 				
 			}
 			else if (currentSize > targetSize)
@@ -767,6 +767,12 @@ extern "C"
 				MainCharObj1[0]->Scale.x = (float)currentSize;
 				MainCharObj1[0]->Scale.y = (float)currentSize;
 				MainCharObj1[0]->Scale.z = (float)currentSize;
+				if (IsFinalLevel())
+				{
+					MainCharObj1[1]->Scale.x = (float)currentSize;
+					MainCharObj1[1]->Scale.y = (float)currentSize;
+					MainCharObj1[1]->Scale.z = (float)currentSize;
+				}
 			}
 		}
 		else
@@ -794,11 +800,19 @@ extern "C"
 			{
 				--fasttimer;
 				MainCharObj2[0]->Speed.x = MainCharObj2[0]->PhysData.HSpeedCap;
+				if (IsFinalLevel())
+				{
+					MainCharObj2[1]->Speed.x = MainCharObj2[0]->PhysData.HSpeedCap;
+				}
 			}
 			else if (fasttimer < 0)
 			{
 				++fasttimer;
 				MainCharObj2[0]->Speed.x = -MainCharObj2[0]->PhysData.HSpeedCap;
+				if (IsFinalLevel())
+				{
+					MainCharObj2[1]->Speed.x = -MainCharObj2[0]->PhysData.HSpeedCap;
+				}
 			}
 		}
 	}
@@ -819,12 +833,12 @@ extern "C"
 		SetCurrentDirectoryA(buf);
 		memcpy(MusicList2, MusicList, MusicList_Length * 4);
 		MusicList2[156] = "chao_g_iede.adx";
-		WriteJump((void*)0x4586A0, GetNextStoryEvent_r);
-		NextStoryEntry.Type = -1;
-		memset(NextStoryEntry.Events, -1, 4);
+		//WriteJump((void*)0x4586A0, GetNextStoryEvent_r);
+		//NextStoryEntry.Type = -1;
+		//memset(NextStoryEntry.Events, -1, 4);
 		WriteJump((void*)0x459910, sub_459910);
 		//InitBase();
 	}
-
+	__declspec(dllexport) PointerList Pointers = { arrayptrandlengthT(pointers, int) };
 	__declspec(dllexport) ModInfo SA2ModInfo { ModLoaderVer };
 }
