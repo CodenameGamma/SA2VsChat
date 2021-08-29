@@ -1257,6 +1257,8 @@ namespace SA2VsChatNET
 		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern bool ToggleChaoKey();
+		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+		public static extern bool Screenflip();
 		[return: MarshalAs(UnmanagedType.I1)]
 		[DllImport("SA2VsChat.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void ToggleWater();

@@ -423,6 +423,21 @@ namespace CrowdControl
                         }*/
                         break;
                     }
+                case "ScreenFlipHoz":
+                    {
+                        if (SA2VsChatNET.SA2VsChat.Screenflip())
+                        {
+                            
+                            //try to do the thing
+                            Respond(request, SimpleTCPClient.EffectResult.Success).Forget(); //or failtemporary
+                        }
+                        else
+                        {
+
+                            Respond(request, SimpleTCPClient.EffectResult.Retry).Forget();
+                        }
+                        break;
+                    }
                 case "Confuse":
                     {
                         if (SA2VsChatNET.SA2VsChat.Confuse())
