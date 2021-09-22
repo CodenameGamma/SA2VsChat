@@ -459,6 +459,7 @@ extern "C"
 			}
 			else
 			{
+				
 				DisplayItemBoxItem(0, ItemBox_Items[item].Texture);
 				ItemBox_Items[item].Code(MainCharacter[0], 0);
 			}
@@ -472,6 +473,14 @@ extern "C"
 		if (GameState == GameStates_Ingame && CurrentLevel < LevelIDs_Route101280 && CurrentLevel != LevelIDs_FinalHazard)
 		{
 			AllocateObjectMaster(CheckLoadOmochao, 2, "CheckLoadOmochao");
+			printf("Spawned Omochao \n");
+			return true;
+		}
+		if (GameState == GameStates_Ingame && CurrentLevel > LevelIDs_Route101280 && CurrentLevel != LevelIDs_FinalHazard)
+		{
+			ChaosDrive_Load(&MainCharObj1[0]->Position);
+			
+			printf("Spawned Chaos Drive \n");
 			return true;
 		}
 		return false;
@@ -620,7 +629,7 @@ extern "C"
 	}
 	__declspec(dllexport) bool Die(const char* user)
 	{
-		if (IsInGame() && IsMechLevel() == false && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		if (IsInGame() && CurrentLevel < LevelIDs_Route101280 && IsMechLevel() == false && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			PrintDebug("Killed by %s!", user);
 			KillPlayer(0);
@@ -631,7 +640,7 @@ extern "C"
 
 	__declspec(dllexport) bool Win(const char* user)
 	{
-		if (IsInGame() && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
+		if (IsInGame() && CurrentLevel < LevelIDs_Route101280 && MainCharObj2[0] && !(MainCharObj2[0]->Powerups & Powerups_Dead))
 		{
 			PrintDebug("Level ended by %s!", user);
 			AwardWin(0);
@@ -720,6 +729,7 @@ extern "C"
 			MainCharObj2[0]->PhysData.GroundAccel *= 3;
 			MainCharObj2[0]->PhysData.MaxAccel *= 3;
 			MainCharObj2[0]->PhysData.field_68 *= 3;
+			
 	
 			SpeedTimer = 1800; //30sec
 			return true;
